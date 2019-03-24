@@ -64,7 +64,7 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
             isCollapse: false,
             menus: [],
@@ -74,12 +74,12 @@ export default {
             routerViewHeight: 300
         }
     },
-    created() {
+    created () {
         this.initMenu()
         this.routerViewHeight = (document.body.clientHeight - 220) > 300 ? (document.body.clientHeight - 220) : 300
     },
     methods: {
-        signOut() {
+        signOut () {
             this.$apis.logout().then(res => {
                 if (res.code === '2000') {
                     localStorage.clear()
@@ -91,7 +91,7 @@ export default {
                 this.$message.error(error.message)
             })
         },
-        initMenu() {
+        initMenu () {
             this.$apis.initMenu().then(res => {
                 if (res.code === '2000') {
                     this.menus = res.data.menus

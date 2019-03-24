@@ -15,7 +15,7 @@ export default {
             default: ''
         }
     },
-    data() {
+    data () {
         return {
             loading: false,
             roles: null,
@@ -31,7 +31,7 @@ export default {
         }
     },
     methods: {
-        queryRoles() {
+        queryRoles () {
             this.loading = true
             this.$apis.queryAllSysRoleName().then((res) => {
                 this.loading = false
@@ -46,7 +46,7 @@ export default {
             })
         }
     },
-    created() {
+    created () {
         this.queryRoles()
     }
 }

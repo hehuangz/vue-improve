@@ -52,7 +52,7 @@ export default {
             default: null
         }
     },
-    data() {
+    data () {
         return {
             formData: {
                 menuStatus: true
@@ -96,7 +96,7 @@ export default {
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.addDialogVisible = val
             if (val) {
                 if (this.dialogData.editable) {
@@ -119,12 +119,12 @@ export default {
                 this.num = this.dialogData.num
             }
         },
-        addDialogVisible(val) {
+        addDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        submit() {
+        submit () {
             let params = { ...this.formData }
             if (this.dialogData.editable) {
                 // 修改权限

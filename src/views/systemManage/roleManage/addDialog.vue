@@ -33,24 +33,24 @@ export default {
             default: false
         }
     },
-    data() {
+    data () {
         return {
             formData: {},
             addDialogVisible: false
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.addDialogVisible = val
             this.errors.clear()
             this.formData = {}
         },
-        addDialogVisible(val) {
+        addDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        submit() {
+        submit () {
             this.$validator.validateAll().then((valid) => {
                 if (valid) {
                     let data = {}

@@ -39,7 +39,7 @@
 import addDialog from './addDialog'
 
 export default {
-    data() {
+    data () {
         return {
             queryParams: {
                 currentPage: 1
@@ -54,11 +54,11 @@ export default {
     components: {
         addDialog
     },
-    created() {
+    created () {
         this.queryList()
     },
     methods: {
-        queryList() {
+        queryList () {
             this.tableLoading = true
             this.$apis.queryApp(this.queryParams).then(res => {
                 this.tableLoading = false
@@ -73,11 +73,11 @@ export default {
                 this.$message.error(error)
             })
         },
-        addApp(row) {
+        addApp (row) {
             this.rowData = row
             this.addDialogVisible = true
         },
-        deleteApp(row) {
+        deleteApp (row) {
             this.$confirm(`确认删除${row.appName}?`).then(_ => {
                 this.$apis.deleteApp({ appId: row.appId }).then(
                     res => {

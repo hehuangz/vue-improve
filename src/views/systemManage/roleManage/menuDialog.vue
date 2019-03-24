@@ -26,7 +26,7 @@ export default {
         },
         dialogData: {}
     },
-    data() {
+    data () {
         return {
             menuDialogVisible: false,
             roleName: '',
@@ -39,19 +39,19 @@ export default {
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.menuDialogVisible = val
             if (val) {
                 this.roleName = this.dialogData.roleName
                 this.queryRoleMenu()
             }
         },
-        menuDialogVisible(val) {
+        menuDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        queryRoleMenu() {
+        queryRoleMenu () {
             this.$apis.queryRoleMenu({ roleId: this.dialogData.roleId }).then(res => {
                 if (res.code === '2000') {
                     this.treeCheckedKeys = res.data.checkedMenuIds
@@ -63,7 +63,7 @@ export default {
                 this.$message.error(error)
             })
         },
-        submit() {
+        submit () {
             let params = {}
             params.roleId = this.dialogData.roleId
             params.menuIds = [...this.$refs.menuTree.getCheckedKeys()]

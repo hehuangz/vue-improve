@@ -62,7 +62,7 @@ export default {
         },
         dialogData: {}
     },
-    data() {
+    data () {
         return {
             operatorDialogVisible: false,
             outTableData: null,
@@ -87,7 +87,7 @@ export default {
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.operatorDialogVisible = val
             if (val) {
                 this.roleName = this.dialogData.roleName
@@ -97,12 +97,12 @@ export default {
                 this.queryInTable()
             }
         },
-        operatorDialogVisible(val) {
+        operatorDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        queryOutTable() {
+        queryOutTable () {
             this.outTableLoading = true
             this.$apis.queryRoleOperator(this.queryOutParams).then(res => {
                 this.outTableLoading = false
@@ -117,7 +117,7 @@ export default {
                 this.$message.error(error)
             })
         },
-        queryInTable() {
+        queryInTable () {
             this.inTableLoading = true
             this.$apis.queryRoleOperator(this.queryInParams).then(res => {
                 this.inTableLoading = false
@@ -132,7 +132,7 @@ export default {
                 this.$message.error(error)
             })
         },
-        outTableSelChange(val) {
+        outTableSelChange (val) {
             if (val.length > 0) {
                 this.addBtnDisabled = false
             } else {
@@ -140,7 +140,7 @@ export default {
             }
             this.addArray = val
         },
-        inTableSelChange(val) {
+        inTableSelChange (val) {
             if (val.length > 0) {
                 this.removeBtnDisabled = false
             } else {
@@ -148,7 +148,7 @@ export default {
             }
             this.removeArray = val
         },
-        addRoleOperator() {
+        addRoleOperator () {
             let addParams = {}
             addParams.roleId = this.dialogData.roleId
             addParams.operatorId = this.addArray.map(item => item.operatorId)
@@ -164,7 +164,7 @@ export default {
                 this.$message.error(error)
             })
         },
-        removeRoleOperator() {
+        removeRoleOperator () {
             let removeParams = {}
             removeParams.roleId = this.dialogData.roleId
             removeParams.operatorId = this.removeArray.map(item => item.operatorId)

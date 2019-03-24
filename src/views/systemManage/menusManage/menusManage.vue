@@ -46,7 +46,7 @@
 import addDialog from './addDialog'
 
 export default {
-    data() {
+    data () {
         return {
             addDialogVisible: false,
             listData: [],
@@ -56,11 +56,11 @@ export default {
     components: {
         addDialog
     },
-    created() {
+    created () {
         this.queryMenu()
     },
     methods: {
-        queryMenu() {
+        queryMenu () {
             this.$apis.queryRoleMenu().then(res => {
                 if (res.code === '2000') {
                     this.listData = res.data.menuList
@@ -71,12 +71,12 @@ export default {
                 this.$message.error(error)
             })
         },
-        addMenu(row, editable) {
+        addMenu (row, editable) {
             this.menuData = row
             this.menuData.editable = editable
             this.addDialogVisible = true
         },
-        toggleOpen(row) {
+        toggleOpen (row) {
             this.$confirm(row.disabled ? '确认设为有效？' : '确认设为失效？').then(_ => {
                 let params = {}
                 params.menuId = row.menuId
@@ -92,7 +92,7 @@ export default {
                 })
             }).catch(_ => {})
         },
-        deleteMenu(row) {
+        deleteMenu (row) {
             this.$confirm(`确认删除${row.menuName}?`).then(_ => {
                 this.$apis.deleteMenu({ menuId: row.menuId }).then(res => {
                     if (res.code === '2000') {
@@ -105,7 +105,7 @@ export default {
                 })
             }).catch(_ => {})
         },
-        tableRowClassName({ row, rowIndex }) {
+        tableRowClassName ({ row, rowIndex }) {
             if (row.disabled) {
                 return 'disabled-row'
             } else {
