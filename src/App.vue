@@ -9,6 +9,7 @@ export default {
     name: 'App',
     created () {
         !localStorage.operatorId && this.$router.replace('/login')
+        console.log('app')
     }
 }
 </script>
