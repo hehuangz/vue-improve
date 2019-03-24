@@ -42,7 +42,7 @@ import operatorDialog from './operatorDialog'
 import menuDialog from './menuDialog'
 
 export default {
-    data() {
+    data () {
         return {
             tableData: null,
             tableLoading: false,
@@ -63,11 +63,11 @@ export default {
         operatorDialog,
         menuDialog
     },
-    created() {
+    created () {
         this.queryList()
     },
     methods: {
-        queryList() {
+        queryList () {
             this.tableLoading = true
             this.$apis.queryAllRole(this.queryParams).then(res => {
                 this.tableLoading = false
@@ -82,15 +82,15 @@ export default {
                 this.$message.error(error)
             })
         },
-        setRoleOperator(row) {
+        setRoleOperator (row) {
             this.operatorDialogVisible = true
             this.rowData = row
         },
-        editRole(row) {
+        editRole (row) {
             this.rowData = row
             this.editDialogVisible = true
         },
-        deleteRole(row) {
+        deleteRole (row) {
             this.$confirm(`确认删除${row.roleName}?`).then(_ => {
                 this.$apis.deleteRole({ roleId: row.roleId }).then(
                     res => {
@@ -108,7 +108,7 @@ export default {
                 )
             }).catch(_ => {})
         },
-        setRoleMenu(row) {
+        setRoleMenu (row) {
             this.rowData = row
             this.menuDialogVisible = true
         }

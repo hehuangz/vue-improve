@@ -41,7 +41,7 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
             userIcon: 'icon-user',
             pwdIcon: 'icon-pwd',
@@ -53,7 +53,7 @@ export default {
         }
     },
     methods: {
-        login() {
+        login () {
             this.$validator.validateAll().then((valid) => {
                 if (valid) {
                     let data = {

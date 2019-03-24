@@ -80,7 +80,7 @@
 <script>
 
 export default {
-    data() {
+    data () {
         return {
             queryParams: {
                 uid: '',
@@ -109,7 +109,7 @@ export default {
         }
     },
     methods: {
-        queryList() {
+        queryList () {
             if (!this.queryParams.uid && !this.queryParams.mobile) {
                 this.$message.error('请输入用户ID或手机号')
                 return

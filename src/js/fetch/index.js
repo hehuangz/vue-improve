@@ -1,9 +1,9 @@
 import axios from 'axios'
 import baseURL from './baseUrlConfig.js'
 const CancelToken = axios.CancelToken
-function addCancel(config, $this, cancel) {
+function addCancel (config, $this, cancel) {
     if ($this) {
-        config.CancelToken = new CancelToken(function executor(c) {
+        config.CancelToken = new CancelToken(function executor (c) {
             $this[cancel] = c
         })
     }
@@ -53,7 +53,7 @@ const fetch = (router) => {
         return Promise.reject(error)
     })
 
-    function createAPI(url, method, data, $this, cancel) {
+    function createAPI (url, method, data, $this, cancel) {
         let config = {
             method: method,
             url: url,

@@ -82,7 +82,7 @@ export default {
         },
         dialogData: {}
     },
-    data() {
+    data () {
         return {
             formData: {},
             dialogTitle: '新增APP版本升级',
@@ -90,7 +90,7 @@ export default {
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.addDialogVisible = val
             if (val) {
                 console.log('val is')
@@ -105,12 +105,12 @@ export default {
                 this.errors.clear()
             }
         },
-        addDialogVisible(val) {
+        addDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        sureHandler() {
+        sureHandler () {
             this.$validator.validateAll().then((valid) => {
                 if (valid) {
                     let data = {}

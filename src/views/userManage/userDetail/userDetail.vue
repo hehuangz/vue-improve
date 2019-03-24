@@ -104,7 +104,7 @@ import detailDialog from './detailDialog'
 import firstDialog from './firstDialog'
 
 export default {
-    data() {
+    data () {
         return {
             queryParams: {
                 uid: '',
@@ -125,11 +125,11 @@ export default {
         detailDialog,
         firstDialog
     },
-    created() {
+    created () {
         this.queryList()
     },
     methods: {
-        queryList() {
+        queryList () {
             this.tableLoading = true
             this.$apis.queryUserDetail(this.queryParams).then(res => {
                 this.tableLoading = false
@@ -144,11 +144,11 @@ export default {
                 this.$message.error(error)
             })
         },
-        seeDetail(row) {
+        seeDetail (row) {
             this.rowData = row
             this.detailDialogVisible = true
         },
-        freezeAccount(row) {
+        freezeAccount (row) {
             if (row.userStatus === 0) {
                 this.$confirm(`确认解冻${row.userName}?`).then(_ => {
                     let params = {}
@@ -191,7 +191,7 @@ export default {
                 }).catch(_ => {})
             }
         },
-        setArea(row) {
+        setArea (row) {
             this.$confirm(`确认将${row.userName}设为区域代理?`).then(_ => {
                 let params = {}
                 params.uid = row.uid
@@ -213,7 +213,7 @@ export default {
                 )
             }).catch(_ => {})
         },
-        setFirst(row) {
+        setFirst (row) {
             this.firstDialogVisible = true
             this.rowData = row
         }

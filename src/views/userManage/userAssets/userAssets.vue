@@ -73,7 +73,7 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
             queryParams: {
                 uid: '',
@@ -92,11 +92,11 @@ export default {
             focusInput: 0
         }
     },
-    created() {
+    created () {
         this.queryList()
     },
     methods: {
-        queryList() {
+        queryList () {
             this.tableLoading = true
             this.$apis.queryUserAssets(this.queryParams).then(res => {
                 this.tableLoading = false
@@ -111,7 +111,7 @@ export default {
                 this.$message.error(error)
             })
         },
-        sortEvent({ prop, order }) {
+        sortEvent ({ prop, order }) {
             this.queryParams.sortName = prop
             this.queryParams.sortType = order === 'ascending' ? 'ASC' : 'DESC'
             this.queryList()

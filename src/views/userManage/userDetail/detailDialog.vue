@@ -152,7 +152,7 @@ export default {
         },
         dialogData: {}
     },
-    data() {
+    data () {
         return {
             uid: null,
             detailDialogVisible: false,
@@ -170,7 +170,7 @@ export default {
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.detailDialogVisible = val
             if (val) {
                 if (!this.uid || this.uid !== this.dialogData.uid) {
@@ -179,12 +179,12 @@ export default {
                 }
             }
         },
-        detailDialogVisible(val) {
+        detailDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        init() {
+        init () {
             this.activeIndex = '0'
             this.baseInfo = null
             this.assetsInfo = null
@@ -199,7 +199,7 @@ export default {
             this.getActivityInfo()
             this.getVoteInfo()
         },
-        getBaseInfo() {
+        getBaseInfo () {
             this.$apis.getUserBaseInfo({ uid: this.uid }).then(res => {
                 if (res.code === '2000') {
                     this.baseInfo = res.data
@@ -208,7 +208,7 @@ export default {
                 }
             })
         },
-        getAssetsInfo() {
+        getAssetsInfo () {
             this.$apis.getLkc({ uid: this.uid }).then(res => {
                 if (res.code === '2000') {
                     this.assetsInfo = res.data
@@ -217,7 +217,7 @@ export default {
                 }
             })
         },
-        getActivityInfo() {
+        getActivityInfo () {
             this.$apis.queryActivityInfo({ uid: this.uid, currentPage: this.activityPage }).then(res => {
                 if (res.code === '2000') {
                     this.activityInfo = res.data.list
@@ -227,7 +227,7 @@ export default {
                 }
             })
         },
-        getVoteInfo() {
+        getVoteInfo () {
             this.$apis.queryActivityVoteInfo({ uid: this.uid, currentPage: this.votePage }).then(res => {
                 if (res.code === '2000') {
                     this.voteInfo = res.data.list

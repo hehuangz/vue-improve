@@ -59,7 +59,7 @@ import addDialog from './addDialog'
 import editDialog from './editDialog'
 
 export default {
-    data() {
+    data () {
         return {
             queryParams: {
                 currentPage: 1
@@ -76,11 +76,11 @@ export default {
         addDialog,
         editDialog
     },
-    created() {
+    created () {
         this.queryList()
     },
     methods: {
-        queryList() {
+        queryList () {
             this.tableLoading = true
             this.$apis.queryAllOperatorRole(this.queryParams).then(res => {
                 this.tableLoading = false
@@ -95,11 +95,11 @@ export default {
                 this.$message.error(error)
             })
         },
-        editAccount(row) {
+        editAccount (row) {
             this.rowData = row
             this.editDialogVisible = true
         },
-        freezeAccount(row) {
+        freezeAccount (row) {
             if (row.operatorStatus === 0) {
                 this.$confirm(`确认解冻${row.operatorName}?`).then(_ => {
                     let params = {}
@@ -142,7 +142,7 @@ export default {
                 }).catch(_ => {})
             }
         },
-        deleteAccount(row) {
+        deleteAccount (row) {
             this.$confirm(`确认删除${row.operatorName}?`).then(_ => {
                 this.$apis.deleteOperator({ operatorId: row.operatorId }).then(
                     res => {

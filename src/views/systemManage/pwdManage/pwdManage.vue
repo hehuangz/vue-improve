@@ -46,13 +46,13 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
             formData: {}
         }
     },
     methods: {
-        submitForm() {
+        submitForm () {
             this.$validator.validateAll().then((valid) => {
                 if (valid) {
                     if (this.formData.newPwd !== this.formData.checkPwd) {
@@ -79,7 +79,7 @@ export default {
                 }
             })
         },
-        resetForm() {
+        resetForm () {
             this.errors.clear()
             this.formData = {}
         }

@@ -8,18 +8,22 @@ module.exports = {
         '@vue/standard'
     ],
     rules: {
-        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off', // allow console during development
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off', // allow debugger during development
-        // 以下为该项目自定义部分
-        'indent': [2, 4], // 缩进风格 - 开启缩进4格
-        'no-spaced-func': 2, // 函数调用时 函数名与()之间不能有空格 - 开启
-        'no-const-assign': 2, // 禁止修改const声明的变量 - 开启
-        'space-before-function-paren': [0, 'always'], // 函数定义时括号前面要有空格 - 关闭
-        'eol-last': 0, // 文件以单一的换行符结束 - 关闭
-        'camelcase': 0, // 强制驼峰法命名 - 关闭
-        'no-undef': 0, // 不能有未定义的变量 - 关闭
-        'no-alert': 0, // 禁止使用alert confirm prompt - 关闭
-        'arrow-parens': 0 // 箭头函数用小括号括起来 - 关闭
+        'no-console': 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'indent': ['error', 4],
+        'space-infix-ops': 'error', // 要求操作符周围有空格
+        'comma-spacing': 'error', // 逗号后面加空格
+        'arrow-spacing': 'error', // 使用 => 前后空格
+        'spaced-comment': 'warn', // 注释风格，前后留一个空格
+        'no-irregular-whitespace': 'error', // 不能有不规则的空格
+        'no-mixed-spaces-and-tabs': 'error', // 不能混用空格和tab
+        'no-multiple-empty-lines': 'error', // 不能有多余的空行
+        'no-var': 'error', // 不能使用var
+        'no-new': 'off',
+        'new-cap': 'off', // 不要求构造函数首字母大写
+        'eqeqeq': 'error', // 使用全等
+        'quotes': [1, 'single'], // 引号类型，使用单引号
+        'camelcase': 'off'
     },
     parserOptions: {
         parser: 'babel-eslint'

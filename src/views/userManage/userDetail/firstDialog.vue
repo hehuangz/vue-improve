@@ -22,7 +22,7 @@ export default {
         },
         dialogData: {}
     },
-    data() {
+    data () {
         return {
             loading: false,
             firstDialogVisible: false,
@@ -32,7 +32,7 @@ export default {
         }
     },
     watch: {
-        value(val) {
+        value (val) {
             this.firstDialogVisible = val
             if (val) {
                 this.userName = this.dialogData.userName
@@ -40,12 +40,12 @@ export default {
                 this.listUsers()
             }
         },
-        firstDialogVisible(val) {
+        firstDialogVisible (val) {
             this.$emit('input', val)
         }
     },
     methods: {
-        sureHandler() {
+        sureHandler () {
             if (!this.channel) {
                 this.$message.error('请选择上级区域')
                 return
@@ -70,7 +70,7 @@ export default {
                 }
             )
         },
-        listUsers() {
+        listUsers () {
             this.loading = true
             this.$apis.listUserInfoByMerType({ merType: 3 }).then((res) => {
                 this.loading = false
