@@ -1,38 +1,69 @@
+import axios from 'axios'
+import baseURL from './baseUrlConfig.js'
+import router from '../../router'
 
 // 正式环境 -- 请使用真实请求 -- start
-// function createAPI(url, method, data, $this, cancel) {
-//     let config = {
-//         method: method,
-//         url: url,
-//         data
-//     }
-//     addCancel(config, $this, cancel)
-//     return instance(config)
-// }
+const instance = axios.create({
+    // 设置超时时间 -30秒
+    timeout: 30000,
+    // 请求的baseUrl
+    baseURL: baseURL,
+    // 请求头部信息
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    // 修改请求数据
+    transformRequest: [function (data, headers) {
+        let ret = ''
+        for (let it in data) {
+            // 去除空字符串的请求字段
+            if (data[it] !== '' && data[it] !== undefined) {
+                if (ret !== '') ret += '&'
+                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it])
+            }
+        }
+        return ret
+    }],
+    // 跨域请求时允许携带凭证（cookie）
+    withCredentials: process.env.NODE_ENV === 'production'
+})
+
+// 用户登录状态过期，路由重定向至登录界面
+instance.interceptors.response.use((res) => {
+    if (res.data.code === '2001') {
+        localStorage.clear()
+        const route = router.history.pending || router.history.current
+        if (route.path !== '/login' || route.name !== '404') {
+            router.replace('/login')
+        }
+        return Promise.reject(res.data)
+    }
+    if (!res) {
+        return Promise.reject(res)
+    }
+    return res.data
+}, (error) => {
+    return Promise.reject(error)
+})
+
+const CancelToken = axios.CancelToken
+function addCancel (config, $this, cancel) {
+    if ($this) {
+        config.CancelToken = new CancelToken(function executor (c) {
+            $this[cancel] = c
+        })
+    }
+}
+
+function createAPI (url, method, data, $this, cancel) {
+    let config = {
+        method: method,
+        url: url,
+        data
+    }
+    addCancel(config, $this, cancel)
+    return instance(config)
+}
 // 正式环境 -- 请使用真实请求 -- end
 
-// 本地调试 -- 建议使用mock数据 -- start
-function createAPI (url, method, data, $this, cancel) {
-    let lastName = url.split('/')[url.split('/').length - 1]
-    let res = {
-        'data': '4004',
-        'message': '请求不存在'
-    }
-    try {
-        res = require('../mocks/' + lastName + '.json')
-    } catch (err) {
-        console.error('请求mock数据失败：不存在 ' + lastName + '.json')
-    }
-    // 输出请求信息
-    console.log('┏-----------------------------┓')
-    console.log('1. Request URL:')
-    console.log(url)
-    console.log('2. Request Form Data:')
-    console.log(data)
-    console.log('3. Response Data:')
-    console.log(res)
-    console.log('┗-----------------------------┛')
-    return Promise.resolve(res)
-}
-// 本地调试 -- 建议使用mock数据 -- end
 export default createAPI
