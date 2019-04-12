@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { commonModule, COMMON_USERINFO } from '@/store/modules/common'
 export default {
     data () {
         return {
@@ -67,6 +68,7 @@ export default {
                             // this.$parent.$emit('initMenu', this.account)
                             localStorage.operatorId = res.data
                             this.$router.replace('/welcome')
+                            this.$store.dispatch(`${commonModule.name}/${COMMON_USERINFO}`, res.data)
                         } else {
                             this.showError = true
                             this.errorMsg = res.message
