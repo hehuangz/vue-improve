@@ -1,9 +1,29 @@
-// Vue CLI3 坑爹的地方 webpack配置需自建 vue.config.js
-// 详见官方文档：https://cli.vuejs.org/zh/config/#vue-config-js
 module.exports = {
-    // vue-router 'history'模式下 请取绝对路径 
-    // baseUrl: process.env.NODE_ENV === 'production' ? '/operation-preview/' : '/'
-
-    // vue-router 默认（'hash'）模式下 请取相对路径
-    // baseUrl: process.env.NODE_ENV === 'production' ? './' : '/'
+    lintOnSave: true,
+    // webpack配置
+    // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
+    chainWebpack: () => {},
+    configureWebpack: () => {},
+    // css相关配置
+    css: {
+        // 是否使用css分离插件 ExtractTextPlugin
+        extract: true,
+        // 开启 CSS source maps?
+        sourceMap: false,
+        // 启用 CSS modules for all css / pre-processor files.
+        modules: false
+    },
+    // webpack-dev-server 相关配置
+    devServer: {
+        open: true,
+        overlay: {
+            warnings: true,
+            errors: true
+        }, // 当出现编译器错误或警告时，在浏览器中显示全屏覆盖层
+        before: app => {}
+    },
+    // 第三方插件配置
+    pluginOptions: {
+    // ...
+    }
 }

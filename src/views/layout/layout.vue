@@ -3,7 +3,7 @@
         <el-header class="layoutHeader" height="48px">
             <label class="titleName">{{$brandInfo.brandName}}管理后台</label>
             <label class="userName">{{userInfo.userName}}</label>
-            <img @click="signOut" class="signoutImg" src="@/assets/icon_signout.png" alt="退出">
+            <img @click="handleSignOut" class="signoutImg" src="@/assets/icon_signout.png" alt="退出">
         </el-header>
         <el-container>
             <div class="layoutAside">
@@ -79,16 +79,52 @@ export default {
         this.routerViewHeight = (document.body.clientHeight - 220) > 300 ? (document.body.clientHeight - 220) : 300
     },
     methods: {
-        signOut () {
-            this.$apis.logout().then(res => {
-                if (res.code === '2000') {
-                    localStorage.clear()
-                    this.$router.push('/login')
-                } else {
-                    this.$message.error(res.message)
+        handleSignOut () {
+            this.$msgbox({
+                title: '确认框',
+                message: '确定要退出登录吗？',
+                showCancelButton: true,
+                beforeClose: (action, instance, done) => {
+                    if (action === 'confirm') {
+                        instance.confirmButtonLoading = true
+                        instance.confirmButtonText = 'loading...'
+                        setTimeout(() => {
+                            this.signOut()
+                                .then(() => {
+                                    instance.confirmButtonLoading = false
+                                    done()
+                                })
+                                .catch(error => {
+                                    console.log(error, 11)
+                                })
+                        }, 300)
+                    } else {
+                        done()
+                    }
                 }
-            }).catch(error => {
-                this.$message.error(error.message)
+            }).then(action => {
+                this.$message({
+                    type: 'success',
+                    message: '退出登录成功'
+                })
+            }).catch(cancle => {
+                // 点取消按钮
+            })
+        },
+        signOut () {
+            return new Promise((resolve, reject) => {
+                this.$apis.logout().then(res => {
+                    if (res.code === '2000') {
+                        localStorage.clear()
+                        this.$router.push('/login')
+                        resolve()
+                    } else {
+                        this.$message.error(res.message)
+                    }
+                }).catch(error => {
+                    reject(new Error('请求失败'))
+                    this.$message.error(error.message)
+                })
             })
         },
         initMenu () {

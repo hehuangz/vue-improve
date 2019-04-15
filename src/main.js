@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store/index'
 import moment from 'moment'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import fetch from './js/fetch'
+import apis from './apis'
 import formatters from './js/formatters'
 import veeValidate from './js/veeValidate'
 import './assets/iconfont.css' // 自定义的icon
@@ -23,7 +24,7 @@ Vue.use(veeValidate, {
 })
 
 // vue原型挂载 - 请求接口函数
-Vue.prototype.$apis = fetch(router)
+Vue.prototype.$apis = apis
 
 // vue原型挂载 - 时间格式化插件
 Vue.prototype.$moment = moment
@@ -42,5 +43,6 @@ formatKeys.forEach((item) => {
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')
