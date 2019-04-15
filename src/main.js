@@ -5,7 +5,7 @@ import store from './store/index'
 import moment from 'moment'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import apis from './js/fetch'
+import apis from './apis'
 import formatters from './js/formatters'
 import veeValidate from './js/veeValidate'
 import './assets/iconfont.css' // 自定义的icon

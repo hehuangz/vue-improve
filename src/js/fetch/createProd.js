@@ -55,7 +55,7 @@ function addCancel (config, $this, cancel) {
     }
 }
 
-function createAPI (url, method, data, $this, cancel) {
+function createProd (url, method, data, $this, cancel) {
     let config = {
         method: method,
         url: url,
@@ -66,4 +66,4 @@ function createAPI (url, method, data, $this, cancel) {
 }
 // 正式环境 -- 请使用真实请求 -- end
 
-export default createAPI
+export default createProd
