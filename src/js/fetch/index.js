@@ -1,7 +1,7 @@
 import createProdAPI from './createAPI'
 import createMock from './createMock'
 
-const createAPI = process.env.NODE_ENV !== 'production' ? createProdAPI : createMock
+const createAPI = process.env.NODE_ENV === 'production' ? createProdAPI : createMock
 
 const apis = {
     /* 登录模块 -- start */
