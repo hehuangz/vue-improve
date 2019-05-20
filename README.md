@@ -5,6 +5,23 @@
 1. 主界面包含: 登录页面；首页；用户管理(用户资产查询、用户日志查询、用户管理)；系统管理（分组权限管理、APP版本管理、后台账号管理、权限分配、修改密码）。
 2. 主功能包含: 本地mock数据；登录跳转；导航栏菜单伸缩；表单校验中文提示；列表查询的常用布局；弹窗的父子组件传值；树组件、嵌套列表的使用。
 
+## 安装预览
+
+```bash
+# 安装依赖
+npm i || yarn || cnpm
+
+# 启动本地调试
+npm run dev || npm start
+
+# 打包压缩
+npm run build
+
+# eslint格式校验
+npm run lint
+```
+
+
 ## 项目结构
 
 ```
@@ -14,12 +31,13 @@
 ├── vue.config.js  -------------------- webpack配置入口
 ├── public  --------------------------- 入口文件
 ├──   ├── favicon.ico  ---------------- 网页图标
-├──   └── index.html  ----------------- 入口页面
+├──   └── index.html  -----÷------------ 入口页面
 └── src  ------------------------------ 源码目录
+    ├── apis  ------------------------- 请求的所有接口
     ├── assets  ----------------------- 项目资源文件目录（图片、字体等）
     ├── components  ------------------- 业务模块集合目录（组件）
     ├── js ---------------------------- 全局变量
-    ├──  ├── fetch  ------------------- 请求配置 (axios ajax配置管理文件)
+    ├──  ├── fetch  ------------------- 请求配置 (axios mock配置管理文件)
     ├──  ├── formatters  -------------- 数据格式化配置
     ├──  ├── mocks  ------------------- 本地mock数据
     ├──  └── veeValidate -------------- 表单校验配置
@@ -30,38 +48,7 @@
     └── router.js  -------------------- 路由配置
 ```
 
-## 环境准备
-``` bash
-# 推荐使用yarn管理依赖
-npm i yarn -g
-yarn config set registry htts://registry.npm.taobao.org
-
-# 安装依赖
-yarn install
-
-# 启动本地调试
-yarn dev
-
-# 打包压缩
-yarn build
-
-# eslint格式校验
-yarn lint
-```
-
-## 所需技术栈
-
-* [vue-cli](https://cli.vuejs.org/zh/) 项目脚手架
-* [vue](https://cn.vuejs.org/) js框架
-* [element-ui](http://element-cn.eleme.io/#/zh-CN) UI框架
-* [vue-router](https://router.vuejs.org/zh/) 路由管理器
-* [vee-validate](https://baianat.github.io/vee-validate/) 表单校验工具
-* [less](http://lesscss.cn/) CSS预处理语言
-* [eslint](https://eslint.org/) 代码规范的检查工具
-* [yarn](https://yarn.bootcss.com/) 依赖管理工具
-* [webpack](https://webpack.docschina.org/concepts/) 模块打包工具
-
-## 友情提示
+## 常见问题说明
 1. 如果`vee-validate`在项目运行时报错，请重新安装旧版本，操作如下：
 * `npm uninstall vee-validate` 或 `yarn remove vee-validate`
 * `npm install vee-validate@2.0.0-rc.25` 或 `yarn add vee-validate@2.0.0-rc.25`
