@@ -1,4 +1,5 @@
 module.exports = {
+    assetsDir: 'testweb',
     lintOnSave: true,
     // webpack配置
     // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
