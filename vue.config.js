@@ -1,4 +1,5 @@
 module.exports = {
+    publicPath: '/',
     assetsDir: 'testweb',
     lintOnSave: true,
     // webpack配置
