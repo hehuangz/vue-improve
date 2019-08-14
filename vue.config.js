@@ -1,3 +1,4 @@
+const path = require('path')
 module.exports = {
     publicPath: '/',
     lintOnSave: true,
@@ -25,6 +26,9 @@ module.exports = {
     },
     // 第三方插件配置
     pluginOptions: {
-    // ...
+        'style-resources-loader': {
+            preProcessor: 'less',
+            patterns: [path.resolve(__dirname, 'src/assets/less/common/_theme.less')]
+        }
     }
 }

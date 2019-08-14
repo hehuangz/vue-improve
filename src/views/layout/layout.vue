@@ -3,7 +3,7 @@
         <el-header class="layoutHeader" height="48px">
             <label class="titleName">{{$brandInfo.brandName}}管理后台</label>
             <label class="userName">{{userInfo.userName}}</label>
-            <img @click="handleSignOut" class="signoutImg" src="@/assets/icon_signout.png" alt="退出">
+            <img @click="handleSignOut" class="signoutImg" src="@/assets/images/icon_signout.png" alt="退出">
         </el-header>
         <el-container>
             <div class="layoutAside">
@@ -20,22 +20,22 @@
                     </div>
                 </template>
                 <el-menu
-                :unique-opened="true"
-                :router="true"
-                :collapse="isCollapse"
-                class="elMenu"
-                text-color="#fff"
-                background-color="#37363b"
-                active-text-color="#ff9234"
-                :default-active="$route.name">
-                <el-menu-item index="welcome">
-                    <i class="el-icon-location-outline"></i>
-                    <span slot="title">首页</span>
-                </el-menu-item>
+                    :unique-opened="true"
+                    :router="true"
+                    :collapse="isCollapse"
+                    class="elMenu"
+                    text-color="#fff"
+                    background-color="#37363b"
+                    active-text-color="#ff9234"
+                    :default-active="$route.name">
+                    <el-menu-item index="welcome">
+                        <i class="el-icon-location-outline"></i>
+                        <span slot="title">首页</span>
+                    </el-menu-item>
                     <template v-for="item in menus">
                         <el-submenu v-if="item.children.length > 0" :key="item.menuId" :index="item.menuPath">
                             <template slot="title">
-                                <i :class="item.menuIcon"></i>
+                                <i :class="item.menuIcon"/>
                                 <span slot="title">{{item.menuName}}</span>
                             </template>
                             <el-menu-item v-for="childItem in item.children" :key="childItem.menuId" :index="childItem.menuPath">
@@ -43,7 +43,7 @@
                             </el-menu-item>
                         </el-submenu>
                         <el-menu-item v-else :key="item.menuId" :index="item.menuPath">
-                            <i :class="item.menuIcon"></i>
+                            <i :class="item.menuIcon"/>
                             <span slot="title">{{item.menuName}}</span>
                         </el-menu-item>
                     </template>
@@ -118,12 +118,10 @@ export default {
                         localStorage.clear()
                         this.$router.push('/login')
                         resolve()
-                    } else {
-                        this.$message.error(res.message)
                     }
                 }).catch(error => {
                     reject(new Error('请求失败'))
-                    this.$message.error(error.message)
+                    console.error(error.message)
                 })
             })
         },
@@ -132,11 +130,9 @@ export default {
                 if (res.code === '2000') {
                     this.menus = res.data.menus
                     this.userInfo = res.data.userInfo
-                } else {
-                    this.$message.error(res.message)
                 }
             }).catch(error => {
-                this.$message.error(error.message)
+                console.error(error.message)
             })
         }
     }

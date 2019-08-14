@@ -1,6 +1,7 @@
 import axios from 'axios'
 import baseURL from './baseUrlConfig.js'
 import router from '../../router'
+import { Message } from 'element-ui'
 
 // 正式环境 -- 请使用真实请求 -- start
 const instance = axios.create({
@@ -30,16 +31,17 @@ const instance = axios.create({
 
 // 用户登录状态过期，路由重定向至登录界面
 instance.interceptors.response.use((res) => {
+    if (!res) {
+        return Promise.reject(res)
+    }
     if (res.data.code === '2001') {
-        localStorage.clear()
         const route = router.history.pending || router.history.current
         if (route.path !== '/login' || route.name !== '404') {
             router.replace('/login')
         }
         return Promise.reject(res.data)
-    }
-    if (!res) {
-        return Promise.reject(res)
+    } else if (res.data.code !== '2000') {
+        Message.error(res.data.message || '请求错误')
     }
     return res.data
 }, (error) => {

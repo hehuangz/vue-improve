@@ -17,8 +17,8 @@
                     name="account"
                     v-validate="'required'"
                     data-vv-as="账号"
-                    @keyup.enter.native="login">
-                </el-input>
+                    @keyup.enter.native="login"
+                />
                 <el-input :class="[errors.has('password') ? 'is-error-input' : '', 'lgInput']"
                     v-model="password"
                     :prefix-icon="pwdIcon"
@@ -29,8 +29,8 @@
                     name="password"
                     data-vv-as="密码"
                     type="password"
-                    @keyup.enter.native="login">
-                </el-input>
+                    @keyup.enter.native="login"
+                />
                 <el-button class="lgButton" type="primary" @click="login" :loading="disabled">
                     {{disabled ? '登 录 中' : '登 录'}}
                 </el-button>
@@ -57,16 +57,14 @@ export default {
         login () {
             this.$validator.validateAll().then((valid) => {
                 if (valid) {
-                    let data = {
+                    let params = {
                         'account': this.account,
                         'password': this.password
                     }
                     this.disabled = true
-                    this.$apis.login(data).then(res => {
+                    this.$apis.login(params).then(res => {
                         this.disabled = false
                         if (res.code === '2000') {
-                            // this.$parent.$emit('initMenu', this.account)
-                            localStorage.operatorId = res.data
                             this.$router.replace('/welcome')
                             this.$store.dispatch(`${commonModule.name}/${COMMON_USERINFO}`, res.data)
                         } else {
@@ -75,7 +73,7 @@ export default {
                         }
                     }).catch(error => {
                         this.disabled = false
-                        this.$message.error(error.message)
+                        console.error(error.message)
                     })
                 }
             })
