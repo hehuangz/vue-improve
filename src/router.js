@@ -14,17 +14,17 @@ export default new Router({
         {
             path: '*',
             name: '404',
-            component: () => import(/* webpackChunkName: "about" */ './views/404')
+            component: resolve => require(['@/views/404'], resolve)
         },
         {
             path: '/login',
             name: 'login',
-            component: () => import(/* webpackChunkName: "about" */ './views/login')
+            component: resolve => require(['@/views/login'], resolve)
         },
         {
             path: '/layout',
             name: 'layout',
-            component: () => import(/* webpackChunkName: "about" */ './views/layout'),
+            component: resolve => require(['@/views/layout'], resolve),
             children: [{
                 path: '/welcome',
                 name: 'welcome',

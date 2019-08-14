@@ -1,5 +1,5 @@
 const defaultState = {
-    userInfo: {} // 0-横屏，1-竖屏
+    userInfo: {}
 }
 export const COMMON_USERINFO = 'COMMON_USERINFO'
 export const commonModule = {

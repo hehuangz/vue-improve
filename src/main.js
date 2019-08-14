@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import apis from './apis'
 import formatters from './js/formatters'
 import veeValidate from './js/veeValidate'
-import './assets/iconfont.css' // 自定义的icon
+import './assets/less/index.less' // 自定义的icon
 
 // 阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
