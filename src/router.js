@@ -22,6 +22,31 @@ export default new Router({
             component: resolve => require(['@/views/login'], resolve)
         },
         {
+            path: '/form',
+            name: 'form',
+            component: resolve => require(['@/views/form'], resolve)
+        },
+        {
+            path: '/bus',
+            name: 'bus',
+            component: resolve => require(['@/views/bus'], resolve)
+        },
+        {
+            path: '/parentChildren',
+            name: 'parentChildren',
+            component: resolve => require(['@/views/parentChildren'], resolve)
+        },
+        {
+            path: '/slot',
+            name: 'slot',
+            component: resolve => require(['@/views/slot'], resolve)
+        },
+        {
+            path: '/myForm',
+            name: 'myForm',
+            component: resolve => require(['@/views/myForm'], resolve)
+        },
+        {
             path: '/layout',
             name: 'layout',
             component: resolve => require(['@/views/layout'], resolve),

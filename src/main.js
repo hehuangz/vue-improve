@@ -9,6 +9,7 @@ import apis from './apis'
 import formatters from './js/formatters'
 import veeValidate from './js/veeValidate'
 import './assets/less/index.less' // 自定义的icon
+import '@/js/utils/bus'
 
 // 阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
