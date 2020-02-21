@@ -6,10 +6,10 @@
 export default {
     inject: ['eat'],
     mounted () {
-        // this.$parent.$on('send', msg => {
-        //     console.log('child2', msg)
-        // })
-        console.log('child2', this.eat())
+        this.$parent.$on('send', msg => {
+            console.log('child2', msg)
+        })
+        // console.log('child2', this.eat())
     },
     methods: {
         handleGet () {

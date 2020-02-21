@@ -12,11 +12,11 @@ export default {
     },
     mounted () {
         // console.log('attrs:', this.$attrs)
-        console.log('child1', this.eat())
+        // console.log('child1', this.eat())
     },
     methods: {
         handleSend () {
-            // this.$parent.$emit('send', 88)
+            this.$parent.$emit('send', 88)
         }
     }
 }
