@@ -1,4 +1,4 @@
-// 广播，遍历所有子组件，直到找到要广播的组件
+// 广播，自上而下遍历所有子组件
 function broadcast (componentName, eventName, params) {
     this.$children.forEach(child => {
         let name = child.$options.componentName
