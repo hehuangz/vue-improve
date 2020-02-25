@@ -12,10 +12,13 @@
                     placeholder="密码"
                 ></HFormInput>
             </HFormItem>
-            <HFormItem>
-                <button @click="onLogin">登陆</button>
+            <HFormItem label="验证码" prop="vcode">
+            <HFormInput v-model="form.vcode"></HFormInput>
+                <!-- <button @click="onLogin">登陆</button> -->
             </HFormItem>
         </HForm>
+        <!-- <el-input v-model="form.username"></el-input> -->
+        <button @click="onLogin">登陆</button>
     </div>
 </template>
 
@@ -35,7 +38,8 @@ export default {
         return {
             form: {
                 username: 'baby',
-                password: ''
+                password: '',
+                vcode: ''
             },
             rules: {
                 username: [
@@ -43,6 +47,9 @@ export default {
                 ],
                 password: [
                     { required: true, message: '请选择密码' }
+                ],
+                vcode: [
+                    { required: true, message: '请选择验证码' }
                 ]
             }
         }

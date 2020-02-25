@@ -10,7 +10,9 @@
 </template>
 
 <script>
+import emitter from '@/mixins/emitter'
 export default {
+    mixins: [emitter],
     inheritAttrs: false, // 设置为false避免展开的attr设置在根元素上
     inject: ['form'],
     props: {
@@ -26,7 +28,9 @@ export default {
     methods: {
         onInput (e) {
             this.$emit('input', e.target.value)
-            this.$parent.$emit('validate', e.target.value)
+            // console.log(this.dispatch)
+            this.dispatch('HFormItem', 'validate')
+            // this.$parent.$emit('validate', e.target.value)
         }
     }
 }

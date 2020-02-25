@@ -12,6 +12,8 @@
 <script>
 import Schema from 'async-validator'
 export default {
+    name: 'HFormItem',
+    componentName: 'HFormItem',
     inject: ['form'],
     props: {
         label: {
