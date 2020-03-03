@@ -26,8 +26,7 @@
 import HFormInput from '@/components/HFormInput'
 import HFormItem from '@/components/HFormItem'
 import HForm from '@/components/HForm'
-import Notice from '@/components/Notice'
-import create from '@/js/utils/create'
+// import create from '@/js/utils/create'
 export default {
     components: {
         HFormInput,
@@ -57,7 +56,7 @@ export default {
     methods: {
         onLogin (val) {
             this.$refs.form.validate(valid => {
-                const notice = create(Notice, {
+                const notice = this.$notice({
                     title: '社会你杨哥喊你来搬砖',
                     message: valid ? '成功' : '校验失败!',
                     duration: 2000

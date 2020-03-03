@@ -1,5 +1,5 @@
 import Vue from 'vue'
-// import Notice from '@/components/Notice'
+import Notice from '@/components/Notice'
 function create (Component, props) {
     // 获取组件实例的方法有两个：
     // 1.vue.extend()
@@ -23,4 +23,10 @@ function create (Component, props) {
     return vm
 }
 
-export default create
+export default {
+    install (Vue) {
+        Vue.prototype.$notice = function (options) {
+            return create(Notice, options)
+        }
+    }
+}
